@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import Image from "next/image";
@@ -360,7 +361,7 @@ export default function Game() {
       <div className="w-full max-w-5xl px-6 pb-5 flex gap-3 flex-wrap">
         <button
           className={`${styles.btnGlow} ${styles.btnGreen}`}
-          onClick={startGame}
+          onClick={() => startGame()}
         >
           {isGameEnd || !isGameStarted ? "▶ Start" : "↺ Restart"}
         </button>
@@ -429,7 +430,7 @@ export default function Game() {
                   </div>
                   <button
                     className={`${styles.btnGlow} ${styles.btnGreen}`}
-                    onClick={startGame}
+                    onClick={() => startGame()}
                   >
                     ↺ Play Again
                   </button>
@@ -452,7 +453,7 @@ export default function Game() {
                   </p>
                   <button
                     className={`${styles.btnGlow} ${styles.btnPink}`}
-                    onClick={startGame}
+                    onClick={() => startGame()}
                   >
                     ↺ Try Again
                   </button>
