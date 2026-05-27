@@ -1,0 +1,327 @@
+/* ─── Background ─────────────────────────────────────────────── */
+
+.pageWrapper {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--bg-primary);
+  z-index: 1;
+}
+
+.pageWrapper::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(
+      ellipse at 20% 50%,
+      rgba(0, 229, 255, 0.04) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 80% 20%,
+      rgba(139, 92, 246, 0.04) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Typography ─────────────────────────────────────────────── */
+
+.orbitron {
+  font-family: "Orbitron", sans-serif;
+}
+
+/* ─── Level buttons ──────────────────────────────────────────── */
+
+.levelBtn {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border-radius: 4px;
+  border: 1px solid var(--text-dim);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.levelBtn:hover {
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+}
+
+.levelBtnActive {
+  border-color: var(--neon-cyan);
+  color: var(--neon-cyan);
+  background: rgba(0, 229, 255, 0.08);
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.25);
+}
+
+/* ─── Action buttons ─────────────────────────────────────────── */
+
+.btnGlow {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: 1px solid currentColor;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    opacity 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btnGlow:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.btnGlow:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.btnGlow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btnCyan {
+  color: var(--neon-cyan);
+}
+.btnPink {
+  color: var(--neon-pink);
+}
+.btnGreen {
+  color: var(--neon-green);
+}
+.btnYellow {
+  color: var(--neon-yellow);
+}
+.btnPurple {
+  color: var(--neon-purple);
+}
+.btnFrozen {
+  color: var(--neon-cyan);
+}
+
+/* ─── Stat cards ─────────────────────────────────────────────── */
+
+.statCard {
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 229, 255, 0.12);
+  border-radius: 6px;
+  padding: 12px 20px;
+  text-align: center;
+}
+
+.statLabel {
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.statValue {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--neon-cyan);
+  line-height: 1;
+}
+
+.statValueWarning {
+  color: var(--neon-pink);
+}
+.statValueGreen {
+  color: var(--neon-green);
+}
+.statValueYellow {
+  color: var(--neon-yellow);
+}
+
+/* ─── Timer bar ──────────────────────────────────────────────── */
+
+.timerBarTrack {
+  width: 100%;
+  height: 6px;
+  border-radius: 9999px;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.timerBar {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+  box-shadow: 0 0 8px var(--neon-cyan);
+  transition: width 1s linear;
+}
+
+.timerBarWarning {
+  background: linear-gradient(90deg, var(--neon-yellow), var(--neon-pink));
+  box-shadow: 0 0 8px var(--neon-pink);
+}
+
+/* Card Level */
+.cardEasy {
+  width: 80px;
+  height: 80px;
+}
+.cardMedium {
+  width: 64px;
+  height: 64px;
+}
+.cardHard {
+  width: 48px;
+  height: 48px;
+}
+
+/* ─── Card flip ──────────────────────────────────────────────── */
+
+.cardWrapper {
+  perspective: 800px;
+}
+
+.cardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cardInnerFlipped {
+  transform: rotateY(180deg);
+}
+
+.cardFace {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card back */
+.cardBackFace {
+  background: var(--card-back);
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.05);
+  overflow: hidden;
+}
+
+.cardBackFace::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 12px,
+    rgba(0, 229, 255, 0.03) 12px,
+    rgba(0, 229, 255, 0.03) 13px
+  );
+}
+
+.cardBackFace::after {
+  content: "?";
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgba(0, 229, 255, 0.25);
+  position: relative;
+  z-index: 1;
+}
+
+.cardWrapper:not(.cardMatched):hover .cardBackFace {
+  border-color: rgba(0, 229, 255, 0.5);
+  box-shadow:
+    0 0 16px rgba(0, 229, 255, 0.2),
+    inset 0 0 20px rgba(0, 229, 255, 0.08);
+}
+
+/* Card front */
+.cardFrontFace {
+  background: var(--card-revealed);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  box-shadow:
+    0 0 12px rgba(0, 229, 255, 0.15),
+    inset 0 0 20px rgba(0, 229, 255, 0.05);
+  transform: rotateY(180deg);
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.cardFrontWrong {
+  border-color: var(--neon-pink) !important;
+  box-shadow:
+    0 0 20px rgba(255, 0, 128, 0.6),
+    inset 0 0 20px rgba(255, 0, 128, 0.1) !important;
+}
+
+/* Matched card */
+.cardMatched .cardFrontFace {
+  border-color: var(--neon-green);
+  box-shadow:
+    0 0 20px rgba(0, 255, 136, 0.35),
+    inset 0 0 20px rgba(0, 255, 136, 0.08);
+  animation: matchPulse 0.5s ease;
+}
+
+@keyframes matchPulse {
+  0% {
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(0, 255, 136, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.35);
+  }
+}
+
+/* ─── Game end overlay ───────────────────────────────────────── */
+
+.gameEndOverlay {
+  background: rgba(5, 11, 24, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  animation: fadeInScale 0.4s ease;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600&display=swap");
+
+:root {
+  --bg-primary: #050b18;
+  --bg-secondary: #0a1628;
+  --bg-card: #0d1f3c;
+  --neon-cyan: #00e5ff;
+  --neon-pink: #ff0080;
+  --neon-purple: #8b5cf6;
+  --neon-green: #00ff88;
+  --neon-yellow: #ffd700;
+  --text-primary: #e2f0ff;
+  --text-dim: #4a6fa5;
+  --card-back: #0f2447;
+  --card-revealed: #081830;
+}
+
+html,
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Rajdhani", sans-serif;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--neon-cyan);
+  border-radius: 2px;
+}
